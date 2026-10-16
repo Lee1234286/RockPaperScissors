@@ -1,4 +1,346 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 #round-result,
 #game-result {
   white-space: pre-line;
+}
+
+/* Pretendard 폰트 불러오기 */
+
+/* 전체 요소 기본 설정 */
+* {
+  box-sizing: border-box;
+}
+
+/* 페이지 전체 */
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background-color: #10131b;
+  color: #e9eef8;
+
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* 기본 제목 및 문단 여백 초기화 */
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+/* 버튼 기본 폰트 통일 */
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Header 전체 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  background-color: #202838;
+  border-bottom: 1px solid #344052;
+}
+
+/* 게임 제목 */
+header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* 점수판 */
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 12px 20px;
+  background-color: #10131b;
+  border-radius: 8px;
+}
+
+/* 점수판 텍스트 */
+.scoreboard p {
+  font-size: 14px;
+  color: #9ca8bc;
+}
+
+/* 실제 점수 */
+.scoreboard span {
+  color: #5eead4;
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* Main 전체 영역 */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(100vh - 100px);
+  padding: 60px 24px;
+}
+
+/* 게임 콘텐츠 영역 */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* 게임 제목 */
+.game h2 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* 게임 설명 */
+.game > p {
+  color: #9ca8bc;
+  font-size: 16px;
+}
+
+/* 가위바위보 버튼 그룹 */
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+}
+
+/* 결과 메시지 영역 */
+.result {
+  width: 100%;
+  min-height: 100px;
+
+  padding: 24px;
+  background-color: #202838;
+  border: 1px solid #344052;
+  border-radius: 12px;
+}
+
+/* 매 판 결과 */
+#round-result {
+  color: #e9eef8;
+  font-size: 16px;
+}
+
+/* 최종 게임 결과 */
+#game-result {
+  color: #5eead4;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* 결과 메시지가 비어 있을 때 여백 제거 */
+#game-result:empty {
+  margin-top: 0;
+}
+
+/* 가위바위보 버튼 */
+.choices button {
+  transition: transform 0.2s ease;
+}
+
+/* 모든 게임 버튼 공통 스타일 */
+.game button {
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* 게임 시작 및 다시 시작 버튼 */
+#start-btn,
+#restart-btn {
+  padding: 14px 36px;
+  background-color: #5eead4;
+  color: #10131b;
+  font-size: 16px;
+}
+
+/* 시작 및 다시 시작 버튼 호버 */
+#start-btn:hover,
+#restart-btn:hover {
+  background-color: #7ff3e1;
+  transform: scale(1.05);
+}
+
+/* 시작 및 다시 시작 버튼 클릭 */
+#start-btn:active,
+#restart-btn:active {
+  transform: scale(0.95);
+}
+
+/* 가위바위보 버튼 */
+.choices button {
+  flex: 1;
+  min-width: 0;
+  min-height: 110px;
+  padding: 24px 16px;
+
+  background-color: #202838;
+  color: #e9eef8;
+  border: 1px solid #344052;
+  font-size: 20px;
+}
+
+/* 가위바위보 버튼 호버 */
+.choices button:not(:disabled):hover {
+  background-color: #293548;
+  border-color: #5eead4;
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.12);
+  transform: scale(1.08);
+}
+
+/* 가위바위보 버튼 클릭 */
+.choices button:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+/* 비활성화된 버튼 */
+.choices button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 키보드로 버튼 선택 시 */
+.game button:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 4px;
+}
+
+/* 숨겨진 버튼은 항상 숨김 */
+.game button[hidden] {
+  display: none;
+}
+
+/* 모션 감소 설정을 사용하는 사용자 */
+@media (prefers-reduced-motion: reduce) {
+  .game button {
+    transition: none;
+  }
+}
+
+/* 태블릿 및 작은 화면 */
+@media (max-width: 768px) {
+  header {
+    padding: 16px 24px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  .scoreboard {
+    gap: 12px;
+    padding: 10px 14px;
+  }
+
+  main {
+    min-height: auto;
+    padding: 80px 24px;
+  }
+
+  .game h2 {
+    font-size: 30px;
+  }
+
+  .choices {
+    gap: 12px;
+  }
+
+  .choices button {
+    min-height: 100px;
+    padding: 20px 12px;
+    font-size: 18px;
+  }
+}
+
+/* 스마트폰 화면 */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 16px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  .scoreboard {
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  main {
+    padding: 60px 16px;
+  }
+
+  .game {
+    gap: 20px;
+  }
+
+  .game h2 {
+    font-size: 28px;
+  }
+
+  .game > p {
+    font-size: 14px;
+  }
+
+  .choices {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .choices button {
+    width: 100%;
+    min-height: 64px;
+    padding: 16px;
+    font-size: 18px;
+  }
+
+  .result {
+    padding: 20px 16px;
+  }
+
+  #round-result {
+    font-size: 14px;
+  }
+
+  #game-result {
+    font-size: 18px;
+  }
 }
