@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./script/script.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rock Paper Scissors</h1>
+
+      <div class="scoreboard">
+        <p>사용자: <span id="human-score">0</span></p>
+        <p>컴퓨터: <span id="computer-score">0</span></p>
+      </div>
+    </header>
+
+    <main>
+      <section class="game">
+        <h2>가위바위보 게임</h2>
+        <p>먼저 5점을 얻는 사람이 승리합니다.</p>
+
+        <button id="start-btn">게임 시작</button>
+
+        <div class="choices">
+          <button id="scissors" disabled>가위</button>
+          <button id="rock" disabled>바위</button>
+          <button id="paper" disabled>보</button>
+        </div>
+
+        <div class="result">
+          <p id="round-result"></p>
+          <p id="game-result"></p>
+        </div>
+
+        <button id="restart-btn" hidden>다시 시작</button>
+      </section>
+    </main>
+  </body>
+</html>
